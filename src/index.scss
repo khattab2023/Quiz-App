@@ -1,4 +1,4 @@
-$primary: #150080;
+$primary: #0c0369;
 $accent: #f44d27;
 $bg: #ffffff;
 $bg-accent: #e7e8e9;
@@ -17,11 +17,26 @@ body{
 }
 
 .quiz-container {
-    width: 500ox;
+    width: 500px;
     background: $bg;
     border-radius: 4px;
     margin-top: 100px;
     padding:30px 60px;
     box-sizing: border-box;
 
+    .active-question-no {
+        font-size:32px ;
+        font-weight: 500;
+        color: $primary;
+    }
+    .total-question{
+        font-size:16px ;
+        font-weight: 500;
+        color: $disabled;
+    }
+    h2{
+        font-size: 20px;
+        font-weight: 500;
+        margin: 0;
+    }
 }
