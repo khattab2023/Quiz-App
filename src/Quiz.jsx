@@ -7,7 +7,7 @@ const Quiz = ({ questions }) => {
   const [answerIdx, setAnswerIdx] = useState(null);
   const [answer, setAnswer] = useState(null);
   const [result, setResult] = useState(resultInitalState); //*The first case to get the 
-
+  const [showResult, setShowResult] = useState(false)
   const { question, choices, correctAnswer } = questions[currentQuestion];
   const onAnswerClick = (answer, index) => {
     setAnswerIdx(index);
@@ -35,11 +35,12 @@ const onClickNext = () => {
       setcurrentQuestion((prev) => prev + 1);
   } else {
     setcurrentQuestion(0);
+    setShowResult(true);
   }
 }
 
   return <div className="quiz-container">
-      <>
+      {!showResult ? (  <>
         <span className="active-question-no">{currentQuestion + 1}</span>
         <span className="total-question">/{questions.length}</span>
         <h2>{question}</h2>
@@ -61,7 +62,10 @@ const onClickNext = () => {
             {currentQuestion === questions.length - 1 ? "Finish" : "Next"}
           </button>
         </div>
-      </>
+      </>) : <div className="result">
+        <h3>Result</h3>
+        </div>}
+    
     </div>;
 };
 
