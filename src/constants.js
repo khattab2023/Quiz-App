@@ -49,3 +49,10 @@ export const jsQuizz = {
     },
   ],
 };
+//* definition to export const (result )
+export const resultInitalState = {
+  score: 0,
+  correctAnswers: 0,
+  wrongAnswers: 0
+
+};

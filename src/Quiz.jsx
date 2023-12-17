@@ -1,10 +1,13 @@
 
 import { useState } from "react";
+import {resultInitalState } from "./constants";
 
 const Quiz = ({ questions }) => {
   const [currentQuestion, setcurrentQuestion] = useState(0);
   const [answerIdx, setAnswerIdx] = useState(null);
   const [answer, setAnswer] = useState(null);
+  const [result, setResult] = useState(resultInitalState); //*The first case to get the 
+
   const { question, choices, correctAnswer } = questions[currentQuestion];
   const onAnswerClick = (answer, index) => {
     setAnswerIdx(index);
@@ -14,8 +17,25 @@ const Quiz = ({ questions }) => {
       setAnswer(false)
     }
   };
+  //* update the status 
 const onClickNext = () => {
-
+  setAnswerIdx(null)   //* Reset the answer
+  setResult((prev) => 
+    answer
+    ? {
+      ...prev,
+      score: prev.score + 5,
+      correctAnswers: prev.correctAnswers + 1,  //*if chose correct answers
+    } : {
+      ...prev,
+      wrongAnswers: prev.wrongAnswers + 1,        //*if chose wrong answers
+    }
+  )
+  if(currentQuestion !== questions.length - 1) {
+      setcurrentQuestion((prev) => prev + 1);
+  } else {
+    setcurrentQuestion(0);
+  }
 }
 
   return <div className="quiz-container">
