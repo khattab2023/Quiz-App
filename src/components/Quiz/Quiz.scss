@@ -1,36 +1,4 @@
-$primary: #0c0369;
-$accent: #f44d27;
-$bg: #ffffff;
-$bg-accent: #e7e8e9;
-$disabled: #9c9c9c;
-$foreground: #2d264b;
-body {
-  font-family: monospace;
-  background: linear-gradient(0deg, $primary 10%, $accent);
-  color: $foreground;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  padding: 0 30px;
-  height: 100vh;
-  nav{
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    height: 101px;
-    color: $bg;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-  }
-  footer{
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-     color: #ffffff;
-     display: flex;
-     flex-direction: column-reverse;
- 
-  }
-}
-
+@import "../../styles/vars.scss";
 .quiz-container {
   width: 500px;
   background: $bg;
@@ -38,6 +6,7 @@ body {
   margin-top: 100px;
   padding: 30px 60px;
   box-sizing: border-box;
+  position: relative;
 
   .active-question-no {
     font-size: 32px;
@@ -57,9 +26,8 @@ body {
   ul {
     margin-top: 20px;
     margin-left: -40px;
-    
+
     li {
-      
       text-decoration: none;
       list-style: none;
       color: $foreground;
@@ -71,18 +39,18 @@ body {
       margin-top: 15px;
       cursor: pointer;
     }
-    .selected-answer{
-        background: $primary;
-        border: 1px solid $accent ;
-        color: $bg;
+    .selected-answer {
+      background: $primary;
+      border: 1px solid $accent;
+      color: $bg;
     }
   }
 
-  .footer{
+  .footer {
     display: flex;
-    justify-content:flex-end ;
+    justify-content: flex-end;
   }
-  button{
+  button {
     background: linear-gradient(0deg, $primary 10%, $accent);
     border: 9px;
     font-size: 18px;
@@ -93,10 +61,26 @@ body {
     border-radius: 4px;
     margin-top: 15px;
     cursor: pointer;
-    &:disabled{
-        background: $bg-accent;
-        color: $disabled;
-        cursor: not-allowed;
+    &:disabled {
+      background: $bg-accent;
+      color: $disabled;
+      cursor: not-allowed;
+    }
+  }
+  .result {
+    text-align: center;
+    h3 {
+      font-size: 24px;
+      letter-spacing: 1.4px;
+      text-align: center;
+    }
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      span {
+        color: $accent;
+        font-size: 22px;
+      }
     }
   }
 }

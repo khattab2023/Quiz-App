@@ -1,0 +1,28 @@
+@import "./vars.scss";
+body {
+  font-family: monospace;
+  background: linear-gradient(0deg, $primary 10%, $accent);
+  color: $foreground;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 30px;
+  height: 100vh;
+  nav{
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    height: 101px;
+    color: $bg;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  footer{
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+     color: #ffffff;
+     display: flex;
+     flex-direction: column-reverse;
+ 
+  }
+}
+

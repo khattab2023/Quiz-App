@@ -1,0 +1,13 @@
+.answer-timer-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #9c9c9c;
+}
+.answer-timer-container .progress {
+  height: 5px;
+  transform-origin: 1s;
+  width: 0;
+  transition-timing-function: linear;
+}/*# sourceMappingURL=AnswerTimer.css.map */
