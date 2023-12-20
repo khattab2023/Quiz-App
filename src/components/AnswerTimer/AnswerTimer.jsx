@@ -13,7 +13,6 @@ function AnswerTimer ({duration, onTimeUp}) {
             intervalRef.current = setInterval(() => {
                 setCounter((cur) => cur +1 );
             }, 1000);
-
             return () => clearInterval(intervalRef.current);
         }, []);
 
@@ -32,7 +31,20 @@ if (counter === duration) {
 }, [counter]);
 
     return <div className="answer-timer-container"> 
-        <div className="progress"></div>
+        <div 
+            style={{
+            width: `${progressLoaded}%`, 
+            backgroundColor: `${
+            progressLoaded < 40
+                ? "lightgreen"
+                : progressLoaded < 70
+                ? "orange"
+                : "red"
+                
+        }`,
+        
+    }}
+        className="progress"></div>
 
     </div>;
 

@@ -10,6 +10,7 @@ const Quiz = ({ questions }) => {
   const [result, setResult] = useState(resultInitalState); //*The first case to get the
   const [showResult, setShowResult] = useState(false);
   const { question, choices, correctAnswer } = questions[currentQuestion];
+  const [showAnswerTimer, setShowAnswerTimer] = useState(true);
   const onAnswerClick = (answer, index) => {
     setAnswerIdx(index);
     if (answer === correctAnswer) {
@@ -18,11 +19,13 @@ const Quiz = ({ questions }) => {
       setAnswer(false);
     }
   };
+
   //* update the status
-  const onClickNext = () => {
+  const onClickNext = (finalAnswer) => {
     setAnswerIdx(null); //* Reset the answer
+    setShowAnswerTimer(false);
     setResult((prev) =>
-      answer
+    finalAnswer
         ? {
             ...prev,
             score: prev.score + 5,
@@ -39,6 +42,10 @@ const Quiz = ({ questions }) => {
       setcurrentQuestion(0);
       setShowResult(true);
     }
+
+    setTimeout(() => {
+      setShowAnswerTimer(true)
+    });
   };
   const onTryAgain = () => {
     setResult(resultInitalState);
@@ -46,7 +53,8 @@ const Quiz = ({ questions }) => {
   };
 
   const handelTimeUp = () => {
-    alert("time is up!");
+    setAnswer(false);
+    onClickNext(false);
 
   };
 
@@ -54,7 +62,7 @@ const Quiz = ({ questions }) => {
     <div className="quiz-container">
       {!showResult ? (
         <>
-          <AnswerTimer duration={10} onTimeUp={handelTimeUp} />
+        {showAnswerTimer && <AnswerTimer duration={5} onTimeUp={handelTimeUp} />}
           <span className="active-question-no">{currentQuestion + 1}</span>
           <span className="total-question">/{questions.length}</span>
           <h2>{question}</h2>
@@ -70,7 +78,7 @@ const Quiz = ({ questions }) => {
             ))}
           </ul>
           <div className="footer">
-            <button onClick={onClickNext} disabled={answerIdx === null}>
+            <button onClick={() => onClickNext (answer)} disabled={answerIdx === null}>
               {currentQuestion === questions.length - 1 ? "Finish" : "Next"}
             </button>
           </div>
