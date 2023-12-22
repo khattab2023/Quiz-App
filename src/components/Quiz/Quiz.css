@@ -63,20 +63,4 @@
   background: #e7e8e9;
   color: #9c9c9c;
   cursor: not-allowed;
-}
-.quiz-container .result {
-  text-align: center;
-}
-.quiz-container .result h3 {
-  font-size: 24px;
-  letter-spacing: 1.4px;
-  text-align: center;
-}
-.quiz-container .result p {
-  font-size: 16px;
-  font-weight: 500;
-}
-.quiz-container .result p span {
-  color: #f44d27;
-  font-size: 22px;
 }/*# sourceMappingURL=Quiz.css.map */

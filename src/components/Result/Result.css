@@ -1,0 +1,16 @@
+.result {
+  text-align: center;
+}
+.result h3 {
+  font-size: 24px;
+  letter-spacing: 1.4px;
+  text-align: center;
+}
+.result p {
+  font-size: 16px;
+  font-weight: 500;
+}
+.result p span {
+  color: #f44d27;
+  font-size: 22px;
+}/*# sourceMappingURL=Result.css.map */

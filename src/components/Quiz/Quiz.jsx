@@ -2,6 +2,7 @@ import { useState } from "react";
 import { resultInitalState } from "../../constants";
 import AnswerTimer from "../AnswerTimer/AnswerTimer";
 import "./Quiz.scss";
+import Result from "../Result/Result";
 
 const Quiz = ({ questions }) => {
   const [currentQuestion, setcurrentQuestion] = useState(0);
@@ -9,8 +10,9 @@ const Quiz = ({ questions }) => {
   const [answer, setAnswer] = useState(null);
   const [result, setResult] = useState(resultInitalState); //*The first case to get the
   const [showResult, setShowResult] = useState(false);
-  const { question, choices, correctAnswer } = questions[currentQuestion];
   const [showAnswerTimer, setShowAnswerTimer] = useState(true);
+
+  const { question, choices, correctAnswer } = questions[currentQuestion];
   const onAnswerClick = (answer, index) => {
     setAnswerIdx(index);
     if (answer === correctAnswer) {
@@ -51,7 +53,7 @@ const Quiz = ({ questions }) => {
     setResult(resultInitalState);
     setShowResult(false);
   };
-
+//* If the choice is not made before time runs out, the choice is wrong
   const handelTimeUp = () => {
     setAnswer(false);
     onClickNext(false);
@@ -62,7 +64,7 @@ const Quiz = ({ questions }) => {
     <div className="quiz-container">
       {!showResult ? (
         <>
-        {showAnswerTimer && <AnswerTimer duration={5} onTimeUp={handelTimeUp} />}
+        {showAnswerTimer && <AnswerTimer duration={10} onTimeUp={handelTimeUp} />}
           <span className="active-question-no">{currentQuestion + 1}</span>
           <span className="total-question">/{questions.length}</span>
           <h2>{question}</h2>
@@ -84,22 +86,9 @@ const Quiz = ({ questions }) => {
           </div>
         </>
       ) : (
-        <div className="result">
-          <h3>Result</h3>
-          <p>
-            Total Questions <span>{questions.length}</span>
-          </p>
-          <p>
-            Total Score <span>{result.score}</span>
-          </p>
-          <p>
-            Correct Answers <span>{result.correctAnswers}</span>
-          </p>
-          <p>
-            Wrong Answers <span>{result.wrongAnswers}</span>
-          </p>
-          <button onClick={onTryAgain}>Try again</button>
-        </div>
+      <Result result={result}
+       onTryAgain={onTryAgain}
+       totalQuestions={questions.length}/>
       )}
     </div>
   );
