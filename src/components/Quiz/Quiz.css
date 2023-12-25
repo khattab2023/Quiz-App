@@ -63,4 +63,12 @@
   background: #e7e8e9;
   color: #9c9c9c;
   cursor: not-allowed;
+}
+.quiz-container input {
+  border: 1px solid #9c9c9c;
+  border-radius: 4px;
+  padding: 10px 20px;
+  width: 100%;
+  margin-top: 20px;
+  box-sizing: border-box;
 }/*# sourceMappingURL=Quiz.css.map */

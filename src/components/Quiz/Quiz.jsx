@@ -11,8 +11,9 @@ const Quiz = ({ questions }) => {
   const [result, setResult] = useState(resultInitalState); //*The first case to get the
   const [showResult, setShowResult] = useState(false);
   const [showAnswerTimer, setShowAnswerTimer] = useState(true);
+  const [inputAnswer, setInputAnswer] = useState("")
+  const { question, choices, correctAnswer, type } = questions[currentQuestion];
 
-  const { question, choices, correctAnswer } = questions[currentQuestion];
   const onAnswerClick = (answer, index) => {
     setAnswerIdx(index);
     if (answer === correctAnswer) {
@@ -26,6 +27,7 @@ const Quiz = ({ questions }) => {
   const onClickNext = (finalAnswer) => {
     setAnswerIdx(null); //* Reset the answer
     setShowAnswerTimer(false);
+    // setInputAnswer("");
     setResult((prev) =>
     finalAnswer
         ? {
@@ -87,8 +89,8 @@ const Quiz = ({ questions }) => {
         </>
       ) : (
       <Result result={result}
-       onTryAgain={onTryAgain}
-       totalQuestions={questions.length}/>
+      onTryAgain={onTryAgain}
+      totalQuestions={questions.length} />
       )}
     </div>
   );
