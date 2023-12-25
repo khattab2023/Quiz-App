@@ -5,10 +5,9 @@ const Result = ({ totalQuestions, result, onTryAgain }) => {
     const [name, setName] = useState("");
     const [highScores, setHighScores] = useState([]);
     const [showScores, setShowScores] = useState(false);
-
     useEffect(() => {
-        setHighScores(JSON.parse(localStorage.getItem(highScores)) || []);
-    }, );
+        setHighScores(JSON.parse(localStorage.getItem("highScores")) || []);
+    }, []);
     const handleSave = () => {
         const score = {
             name,
@@ -17,19 +16,15 @@ const Result = ({ totalQuestions, result, onTryAgain }) => {
         const newHighScores = [...highScores, score].sort(
             (a, b) => b.score - a.score
         );
-
         setHighScores(newHighScores);
         setShowScores(true);
-
-        
         localStorage.setItem("highScores", JSON.stringify(newHighScores));
     };
     const handleTryAgain = () => {
         setShowScores(false);
         setHighScores([]);
         onTryAgain();
-    }
-
+    };
     return (
         <div className="result">
             <h3>Result</h3>
