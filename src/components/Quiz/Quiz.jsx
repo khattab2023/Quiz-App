@@ -28,14 +28,14 @@ const Quiz = ({ questions }) => {
     setResult((prev) =>
       finalAnswer
         ? {
-          ...prev,
-          score: prev.score + 5,
-          correctAnswers: prev.correctAnswers + 1, //*if chose correct answers
-        }
+            ...prev,
+            score: prev.score + 5,
+            correctAnswers: prev.correctAnswers + 1, //*if chose correct answers
+          }
         : {
-          ...prev,
-          wrongAnswers: prev.wrongAnswers + 1, //*if chose wrong answers
-        }
+            ...prev,
+            wrongAnswers: prev.wrongAnswers + 1, //*if chose wrong answers
+          }
     );
     if (currentQuestion !== questions.length - 1) {
       setcurrentQuestion((prev) => prev + 1);
@@ -44,7 +44,7 @@ const Quiz = ({ questions }) => {
       setShowResult(true);
     }
     setTimeout(() => {
-      setShowAnswerTimer(true)
+      setShowAnswerTimer(true);
     });
   };
   const onTryAgain = () => {
@@ -60,7 +60,9 @@ const Quiz = ({ questions }) => {
     <div className="quiz-container">
       {!showResult ? (
         <>
-          {showAnswerTimer && <AnswerTimer duration={10} onTimeUp={handelTimeUp} />}
+          {showAnswerTimer && (
+            <AnswerTimer duration={20} onTimeUp={handelTimeUp} />
+          )}
           <span className="active-question-no">{currentQuestion + 1}</span>
           <span className="total-question">/{questions.length}</span>
           <h2>{question}</h2>
@@ -76,15 +78,20 @@ const Quiz = ({ questions }) => {
             ))}
           </ul>
           <div className="footer">
-            <button onClick={() => onClickNext(answer)} disabled={answerIdx === null}>
+            <button
+              onClick={() => onClickNext(answer)}
+              disabled={answerIdx === null}
+            >
               {currentQuestion === questions.length - 1 ? "Finish" : "Next"}
             </button>
           </div>
         </>
       ) : (
-        <Result result={result}
+        <Result
+          result={result}
           onTryAgain={onTryAgain}
-          totalQuestions={questions.length} />
+          totalQuestions={questions.length}
+        />
       )}
     </div>
   );
